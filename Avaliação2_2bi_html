@@ -1,0 +1,83 @@
+TELA DE LOGIN
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h2>Login</h2>
+    <form method="POST">
+        <input type="text" name="cpf" placeholder="CPF" required><br>
+        <input type="password" name="senha" placeholder="Senha" required><br>
+        <button type="submit">Entrar</button>
+    </form>
+</body>
+</html>
+
+TELA DE CADASTRO
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cadastro</title>
+</head>
+<body>
+    <h2>Cadastro de Usuário</h2>
+    <form method="POST">
+        <input type="text" name="cpf" placeholder="CPF" required><br>
+        <input type="password" name="senha" placeholder="Senha" required><br>
+        <input type="password" name="confirmar_senha" placeholder="Confirmar Senha" required><br>
+        <select name="tipo">
+            <option value="REGULAR">Usuário Comum</option>
+            <option value="ADMIN">Administrador</option>
+        </select><br>
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+</html>
+
+TELA INDEX 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Sistema de Autenticação</h1>
+    
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('cadastro') }}">Cadastro</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% if current_user.tipo == "ADMIN" %}
+                    <li><a href="{{ url_for('cadastro_tecnologia') }}">Cadastrar Tecnologia</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('tecnologias') }}">Visualizar Tecnologias</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% if current_user.is_authenticated %}
+        <p>Você está logado como: <strong>{{ current_user.cpf }}</strong> ({{ current_user.tipo }})</p>
+    {% else %}
+        <p>Faça login ou cadastre-se para acessar o sistema.</p>
+    {% endif %}
+</body>
+</html>
+
+TELA DO DASHBOARD 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Bem-vindo, {{ usuario.cpf }}</h2>
+    <p>Tipo de usuário: {{ usuario.tipo }}</p>
+    <a href="{{ url_for('logout') }}">Sair</a>
+</body>
+</html>
