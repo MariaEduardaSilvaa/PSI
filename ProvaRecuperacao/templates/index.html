@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block navbar %}
+    <h2><a href="{{url_for('index')}}">Cadastro</a></h2>
+    <h2><a href="{{url_for('criar_post')}}">Criar Post</a></h2>
+    <h2><a href="{{url_for('login')}}">Longin</a></h2>
+    <h2><a href="{{url_for('inicial')}}">Pagina Inicial</a></h2>
+{%endblock%}
+
+{% block conteudo %}
+    <form action="{{url_for('index')}}" method="post">
+        <Label>Nome:</Label>
+        <input type="text" name="nome">
+        <br>
+        <Label>Email:</Label>
+        <input type="email" name="email">
+        <Label>Senha:</Label>
+        <input type="password" name="senha">
+        <Label>Confirmar Senha:</Label>
+        <input type="password" name="confirmar_senha">
+        <button>Registrar</button>
+        {% if get_flashed_messages() %}
+            <div class="flash">{{ get_flashed_messages()[-1] }}</div>
+        {% endif %}
+    </form>
+
+{%endblock%}
+</body>
+</html>

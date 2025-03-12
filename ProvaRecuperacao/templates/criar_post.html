@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block navbar %}
+    <h2><a href="{{url_for('index')}}">Cadastro</a></h2>
+    <h2><a href="{{url_for('criar_post')}}">Criar Post</a></h2>
+    <h2><a href="{{url_for('login')}}">Longin</a></h2>
+    <h2><a href="{{url_for('inicial')}}">Pagina Inicial</a></h2>
+{%endblock%}
+
+{% block conteudo %}
+    
+    <form action="{{url_for('criar_post')}}" method="POST">
+        <label for="danca">
+            Conteudo: 
+        </label>
+        <input type="text" name="conteudo">
+
+        <button>Enviar</button>
+    </form>
+{%endblock%}

@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block navbar %}
+    <h2><a href="{{url_for('index')}}">Cadastro</a></h2>
+    <h2><a href="{{url_for('criar_post')}}">Criar Post</a></h2>
+    <h2><a href="{{url_for('login')}}">Longin</a></h2>
+    <h2><a href="{{url_for('inicial')}}">Pagina Inicial</a></h2>
+{%endblock%}
+
+{% block conteudo %}
+    
+{%for post in posts%}
+<div>
+    
+    <p><strong>Usuario {{post.user_id}}:</strong> {{post.conteudo}}</p>
+
+</div>
+{%endfor%}
+{%endblock%}

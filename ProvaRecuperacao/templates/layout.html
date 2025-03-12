@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            border: 0;
+        }
+
+        body, html {
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        nav {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 10px;
+            background-color: rgb(6, 101, 78);
+        }
+
+        nav h1 {
+            font-size: 34px;
+            color: white;
+        }
+
+        nav h2 {
+            font-size: 28px;
+            color: white;
+        }
+
+        nav h2:hover{
+            color: rgb(16, 163, 127);
+        }
+
+
+
+
+        main ul {
+            padding: 20px 60px;
+            width: 400px;
+            background-color: bisque;
+            border-radius: 18px;
+            border: 1px solid rgb(236, 152, 49);
+
+        }
+
+        div.user {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        a {
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            {% block navbar %}
+            {% endblock %}
+        </nav> 
+        <main>
+            {% block conteudo %}
+                
+            {% endblock %}
+        </main>
+    </div>
+
+
+    
+</body>
+</html>
