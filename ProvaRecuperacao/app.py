@@ -58,6 +58,7 @@ def login():
     return render_template('login.html')
 
 @app.route('/inicial')
+@login_required
 def inicial():
     posts = Post.listar()
     return render_template("inicial.html", posts=posts)
